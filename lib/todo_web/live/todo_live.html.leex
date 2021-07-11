@@ -1,0 +1,22 @@
+<section >
+  <h1>Todo App</h1>
+
+  <form action="#" phx-submit="add">
+    <%= text_input :task, :title, placeholder: "What do you want to get done?" %>
+    <%= submit "Add", phx_disable_with: "Adding..." %>
+  </form>
+
+  <h2>Existing tasks</h2>
+  <article>
+    <ol>
+      <%= for task <- @all_tasks do %>
+        <div>
+          <%= checkbox(:task, :is_completed, phx_click: "toggle_completed", phx_value_id: task.id,value: task.is_completed) %>
+          <%= task.title %>
+        </div>
+      <% end %>
+
+    </ul>
+  </article>
+
+</section>
